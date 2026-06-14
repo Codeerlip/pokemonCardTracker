@@ -90,6 +90,17 @@ def search_multi(queries: list[str]) -> list[dict]:
 def _parse(item: dict) -> dict:
     photos = item.get("photos", [])
     thumbnail = photos[0].get("url", "") if photos else ""
+
+    ts = item.get("created_at_ts")
+    if not ts:
+        raw = item.get("created_at", "")
+        if raw:
+            try:
+                from datetime import datetime, timezone
+                ts = int(datetime.fromisoformat(raw.replace("Z", "+00:00")).timestamp())
+            except (ValueError, AttributeError):
+                ts = None
+
     return {
         "id": str(item.get("id", "")),
         "title": item.get("title", ""),
@@ -99,5 +110,5 @@ def _parse(item: dict) -> dict:
         "description": item.get("description", ""),
         "url": item.get("url", ""),
         "thumbnail": thumbnail,
-        "created_at_ts": item.get("created_at_ts"),
+        "created_at_ts": ts,
     }

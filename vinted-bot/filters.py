@@ -58,7 +58,7 @@ def check_price(price: float, max_price: float | None) -> bool:
 
 def check_recency(created_at_ts: int | None, max_days: int = 30) -> bool:
     if not created_at_ts:
-        return True
+        return False
     cutoff = datetime.now(timezone.utc) - timedelta(days=max_days)
     listing_date = datetime.fromtimestamp(created_at_ts, tz=timezone.utc)
     return listing_date >= cutoff
