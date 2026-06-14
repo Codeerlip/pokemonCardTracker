@@ -1,0 +1,6 @@
+vinted-bot/.venv/
+vinted-bot/__pycache__/
+vinted-bot/tests/__pycache__/
+vinted-bot/seen_listings.db
+*.pyc
+.DS_Store
