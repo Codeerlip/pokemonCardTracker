@@ -522,5 +522,6 @@
     }
   ],
   "poll_interval_seconds": 900,
+  "max_listing_age_days": 30,
   "discord_webhook_url": "YOUR_DISCORD_WEBHOOK_URL"
 }

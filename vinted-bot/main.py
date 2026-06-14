@@ -32,8 +32,9 @@ def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, int]:
         title_ok = filters.check_title_relevance(listing["title"], card["name"], card.get("set_number", ""))
         condition_ok = filters.check_condition(listing["condition"])
         price_ok = filters.check_price(listing["price"], card.get("max_price"))
+        recency_ok = filters.check_recency(listing.get("created_at_ts"), cfg.get("max_listing_age_days", 30))
 
-        if not title_ok or not condition_ok or not price_ok:
+        if not title_ok or not condition_ok or not price_ok or not recency_ok:
             db.mark_seen(listing["id"])
             continue
 

@@ -1,3 +1,5 @@
+from datetime import datetime, timezone, timedelta
+
 DUTCH_MARKERS = {
     "nieuw", "gebruikt", "goede", "staat", "verzenden", "verzending",
     "ophalen", "betaling", "betalen", "kaart", "pokemon", "conditie",
@@ -52,6 +54,14 @@ def check_price(price: float, max_price: float | None) -> bool:
     if max_price is None:
         return True
     return price <= max_price
+
+
+def check_recency(created_at_ts: int | None, max_days: int = 30) -> bool:
+    if not created_at_ts:
+        return True
+    cutoff = datetime.now(timezone.utc) - timedelta(days=max_days)
+    listing_date = datetime.fromtimestamp(created_at_ts, tz=timezone.utc)
+    return listing_date >= cutoff
 
 
 def check_title_relevance(title: str, card_name: str, set_number: str = "") -> bool:

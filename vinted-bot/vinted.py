@@ -99,4 +99,5 @@ def _parse(item: dict) -> dict:
         "description": item.get("description", ""),
         "url": item.get("url", ""),
         "thumbnail": thumbnail,
+        "created_at_ts": item.get("created_at_ts"),
     }
