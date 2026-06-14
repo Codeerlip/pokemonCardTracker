@@ -27,37 +27,23 @@ def send(listing: dict, card_name: str, card_set: str, language: str, webhook_ur
     resp.raise_for_status()
 
 
-def send_debrief(run_results: list, webhook_url: str) -> None:
+def send_debrief(matches: list, webhook_url: str) -> None:
+    """Post one summary embed listing every new matched listing for this run."""
     timestamp = datetime.now(timezone.utc).strftime("%d %b %Y · %H:%M UTC")
-    total_listings = sum(r["listings_found"] for r in run_results)
-    total_matches = sum(r["matches"] for r in run_results)
-    seen = [r for r in run_results if r["listings_found"] > 0]
+    count = len(matches)
 
     lines = []
-
-    if total_matches:
-        lines.append(f"**✅ {total_matches} match{'es' if total_matches > 1 else ''} found**")
-        for r in run_results:
-            if r["matches"]:
-                lines.append(f"> 🎴 **{r['card_name']}** — {r['card_set']}")
-        lines.append("")
-
-    lines.append("**📦 Card visibility this run**")
-    if seen:
-        for r in sorted(seen, key=lambda x: x["listings_found"], reverse=True):
-            dots = "🟡" * min(r["listings_found"], 5)
-            match_flag = "  ✅" if r["matches"] else ""
-            lines.append(f"{dots} **{r['card_name']}** — {r['listings_found']} listing(s){match_flag}")
-    else:
-        lines.append("*No listings found this run.*")
+    for m in matches:
+        lines.append(
+            f"• **[{m['card_name']}]({m['listing']['url']})** ({m['card_set']}) "
+            f"— €{m['listing']['price']:.2f} · {m['listing']['condition']}"
+        )
 
     embed = {
-        "title": f"📊 Run complete · {timestamp}",
+        "title": f"🎴 {count} new listing{'s' if count > 1 else ''} · {timestamp}",
         "color": DEBRIEF_COLOR,
         "description": "\n".join(lines),
-        "footer": {
-            "text": f"Vinted Delta Species Bot · {total_listings} listings scanned · {total_matches} match(es)"
-        },
+        "footer": {"text": "Vinted Delta Species Bot"},
     }
     resp = requests.post(webhook_url, json={"embeds": [embed]}, timeout=10)
     resp.raise_for_status()

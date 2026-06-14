@@ -17,13 +17,13 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, int]:
+def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, list]:
     queries = card["search_queries"]
     print(f"[main] searching {len(queries)} query/queries for: {card['name']}")
     listings = vinted.search_multi(queries)
     print(f"[main] found {len(listings)} unique listing(s) for {card['name']}")
 
-    new_count = 0
+    matches = []
     for listing in listings:
         if db.is_seen(listing["id"]):
             continue
@@ -38,25 +38,19 @@ def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, int]:
             db.mark_seen(listing["id"])
             continue
 
-        new_count += 1
         print(
             f"[main] MATCH — {listing['title']} | "
             f"€{listing['price']:.2f} | {listing['condition']} | lang:{language}"
         )
+        matches.append({"card_name": card["name"], "card_set": card.get("set", ""), "listing": listing})
 
         if not dry_run:
-            notifier.send(
-                listing,
-                card["name"],
-                card["set"],
-                language,
-                cfg["discord_webhook_url"],
-            )
+            notifier.send(listing, card["name"], card.get("set", ""), language, cfg["discord_webhook_url"])
 
         db.mark_seen(listing["id"])
 
-    print(f"[main] {new_count} new match(es) for {card['name']}")
-    return len(listings), new_count
+    print(f"[main] {len(matches)} new match(es) for {card['name']}")
+    return len(listings), matches
 
 
 def main() -> None:
@@ -71,21 +65,15 @@ def main() -> None:
     cfg["discord_webhook_url"] = os.environ.get("DISCORD_WEBHOOK_URL") or cfg.get("discord_webhook_url", "")
 
     print("[main] --- starting poll cycle ---")
-    run_results = []
+    all_matches = []
     for card in cfg["cards"]:
-        found, matched = process_card(card, cfg, args.dry_run)
-        run_results.append({
-            "card_name": card["name"],
-            "card_set": card.get("set", ""),
-            "listings_found": found,
-            "matches": matched,
-        })
+        found, matches = process_card(card, cfg, args.dry_run)
         db.record_sightings(card["name"], found)
+        all_matches.extend(matches)
         time.sleep(random.uniform(3, 7))
 
-    total_found = sum(r["listings_found"] for r in run_results)
-    if total_found > 0 and not args.dry_run:
-        notifier.send_debrief(run_results, cfg["discord_webhook_url"])
+    if all_matches and not args.dry_run:
+        notifier.send_debrief(all_matches, cfg["discord_webhook_url"])
 
     print("[main] cycle complete")
 
