@@ -2,9 +2,9 @@
 
 ## Last session
 - **Date:** 2026-06-14
-- **Completed:** P-008 (one-shot main.py) + P-009 (GitHub Actions workflow). 36/36 tests pass. Discord webhook URL set in config.json and bot running locally.
+- **Completed:** P-011 (card sightings DB) + P-012 (visual run debrief). Bot live on GitHub Actions, first real match caught (Heracross δ €9.89). 36/36 tests pass.
 - **In progress:** —
-- **Next up:** P-010 (manual): push repo to GitHub, add DISCORD_WEBHOOK_URL as repo secret, replace URL in config.json with placeholder before pushing
+- **Next up:** Add card image thumbnail to match notification (listing photo from Vinted API already extracted in _parse)
 
 ---
 

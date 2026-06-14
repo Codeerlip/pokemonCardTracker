@@ -88,6 +88,8 @@ def search_multi(queries: list[str]) -> list[dict]:
 
 
 def _parse(item: dict) -> dict:
+    photos = item.get("photos", [])
+    thumbnail = photos[0].get("url", "") if photos else ""
     return {
         "id": str(item.get("id", "")),
         "title": item.get("title", ""),
@@ -96,4 +98,5 @@ def _parse(item: dict) -> dict:
         "condition": item.get("status", ""),
         "description": item.get("description", ""),
         "url": item.get("url", ""),
+        "thumbnail": thumbnail,
     }

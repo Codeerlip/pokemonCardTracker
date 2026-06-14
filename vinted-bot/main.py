@@ -17,7 +17,7 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def process_card(card: dict, cfg: dict, dry_run: bool) -> None:
+def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, int]:
     queries = card["search_queries"]
     print(f"[main] searching {len(queries)} query/queries for: {card['name']}")
     listings = vinted.search_multi(queries)
@@ -55,6 +55,7 @@ def process_card(card: dict, cfg: dict, dry_run: bool) -> None:
         db.mark_seen(listing["id"])
 
     print(f"[main] {new_count} new match(es) for {card['name']}")
+    return len(listings), new_count
 
 
 def main() -> None:
@@ -69,9 +70,22 @@ def main() -> None:
     cfg["discord_webhook_url"] = os.environ.get("DISCORD_WEBHOOK_URL") or cfg.get("discord_webhook_url", "")
 
     print("[main] --- starting poll cycle ---")
+    run_results = []
     for card in cfg["cards"]:
-        process_card(card, cfg, args.dry_run)
+        found, matched = process_card(card, cfg, args.dry_run)
+        run_results.append({
+            "card_name": card["name"],
+            "card_set": card.get("set", ""),
+            "listings_found": found,
+            "matches": matched,
+        })
+        db.record_sightings(card["name"], found)
         time.sleep(random.uniform(3, 7))
+
+    total_found = sum(r["listings_found"] for r in run_results)
+    if total_found > 0 and not args.dry_run:
+        notifier.send_debrief(run_results, cfg["discord_webhook_url"])
+
     print("[main] cycle complete")
 
 

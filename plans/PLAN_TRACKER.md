@@ -33,3 +33,5 @@
 |---|---|---|---|---|
 | P-008 | main.py — one-shot mode + env var webhook | Done | core-engineer | 36/36 tests pass |
 | P-009 | GitHub Actions cron workflow | Done | infrastructure | .github/workflows/vinted-bot.yml created |
+| P-011 | db.py — card sightings tracking | Done | database-engineer | 36/36 tests pass |
+| P-012 | notifier.py — run debrief Discord message | Done | notifier-engineer | Visual embed with emoji dots + match highlights |
