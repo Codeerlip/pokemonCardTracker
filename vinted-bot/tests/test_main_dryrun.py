@@ -11,8 +11,8 @@ def test_dry_run_suppresses_discord(mocker):
     }
     mocker.patch("main.load_config", return_value=cfg)
     mocker.patch("sys.argv", ["main.py", "--dry-run"])
-    notifier_mock = mocker.patch("notifier.send")
+    debrief_mock = mocker.patch("notifier.send_debrief")
 
     main.main()
 
-    notifier_mock.assert_not_called()
+    debrief_mock.assert_not_called()

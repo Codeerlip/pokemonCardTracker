@@ -43,10 +43,6 @@ def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, list]:
             f"€{listing['price']:.2f} | {listing['condition']} | lang:{language}"
         )
         matches.append({"card_name": card["name"], "card_set": card.get("set", ""), "listing": listing})
-
-        if not dry_run:
-            notifier.send(listing, card["name"], card.get("set", ""), language, cfg["discord_webhook_url"])
-
         db.mark_seen(listing["id"])
 
     print(f"[main] {len(matches)} new match(es) for {card['name']}")
