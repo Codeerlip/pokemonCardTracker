@@ -83,7 +83,7 @@ def search_multi(queries: list[str]) -> list[dict]:
             if parsed["id"] and parsed["id"] not in seen_ids:
                 seen_ids.add(parsed["id"])
                 results.append(parsed)
-        time.sleep(random.uniform(2, 5))
+        time.sleep(random.uniform(0.5, 1.5))
     return results
 
 

@@ -66,7 +66,7 @@ def main() -> None:
         found, matches = process_card(card, cfg, args.dry_run)
         db.record_sightings(card["name"], found)
         all_matches.extend(matches)
-        time.sleep(random.uniform(3, 7))
+        time.sleep(random.uniform(1, 2))
 
     if all_matches and not args.dry_run:
         notifier.send_debrief(all_matches, cfg["discord_webhook_url"])
