@@ -69,7 +69,7 @@ def check_title_relevance(title: str, card_name: str, set_number: str = "") -> b
     - the set number components both appear (e.g. '13' and '113'), OR
     - an explicit set keyword ('delta', 'δ', 'species') appears.
     Rarity markers (ex/gx/vmax/v) in the card name are optional."""
-    _OPTIONAL = {"ex", "gx", "vmax", "v", "δ"}
+    _OPTIONAL = {"gx", "vmax", "v", "δ"}
     name_words = [w for w in card_name.lower().split() if w not in _OPTIONAL]
     title_lower = title.lower()
 

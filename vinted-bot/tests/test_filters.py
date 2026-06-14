@@ -74,6 +74,15 @@ def test_check_title_relevance_ds_abbreviation_via_set_number():
     assert filters.check_title_relevance("Rayquaza DS 13/113", "Rayquaza δ", "13/113") is True
 
 
+def test_check_title_relevance_ex_card_requires_ex_in_title():
+    # Salamence 14/113 (wrong card, no "ex") must not match Salamence ex δ 98/101
+    assert filters.check_title_relevance("Salamence Delta Species 14/113", "Salamence ex δ", "98/101") is False
+
+
+def test_check_title_relevance_ex_card_passes_with_ex():
+    assert filters.check_title_relevance("Salamence ex Dragon Frontiers 98/101", "Salamence ex δ", "98/101") is True
+
+
 def test_check_price_within_limit():
     assert filters.check_price(12.50, 25.00) is True
 
