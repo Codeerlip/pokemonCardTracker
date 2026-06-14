@@ -21,8 +21,10 @@ def send_debrief(matches: list, webhook_url: str) -> None:
         "footer": {"text": "Vinted Delta Species Bot"},
     })
 
-    # One embed per match (Discord max 10 embeds per POST, max 6000 chars total)
-    for m in matches[:9]:  # reserve slot 0 for header
+    # One embed per match (Discord max 10 embeds per POST, reserve slot 0 for header)
+    shown = matches[:9]
+    overflow = len(matches) - len(shown)
+    for m in shown:
         listing = m["listing"]
         embed = {
             "title": f"{m['card_name']} ({m['card_set']})",
@@ -31,11 +33,15 @@ def send_debrief(matches: list, webhook_url: str) -> None:
             "fields": [
                 {"name": "💶 Price", "value": f"€{listing['price']:.2f}", "inline": True},
                 {"name": "🏷️ Condition", "value": listing["condition"], "inline": True},
+                {"name": "🔗 Link", "value": f"[View on Vinted]({listing['url']})", "inline": False},
             ],
         }
         if listing.get("thumbnail"):
             embed["thumbnail"] = {"url": listing["thumbnail"]}
         embeds.append(embed)
+
+    if overflow:
+        embeds[0]["footer"]["text"] += f" · +{overflow} more not shown (first-run backfill)"
 
     resp = requests.post(webhook_url, json={"embeds": embeds}, timeout=10)
     resp.raise_for_status()
