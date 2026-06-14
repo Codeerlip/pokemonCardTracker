@@ -14,9 +14,14 @@ def send_debrief(matches: list, webhook_url: str) -> None:
 
     embeds = []
 
-    # Header embed
+    # Header embed with compact summary of all matches
+    summary_lines = [
+        f"• {m['card_name']} · {m['card_set']} · €{m['listing']['price']:.2f}"
+        for m in matches
+    ]
     embeds.append({
         "title": f"🎴 {count} new listing{'s' if count > 1 else ''} · {timestamp}",
+        "description": "\n".join(summary_lines),
         "color": DEBRIEF_COLOR,
         "footer": {"text": "Vinted Delta Species Bot"},
     })
