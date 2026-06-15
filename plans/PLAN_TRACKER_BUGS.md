@@ -21,3 +21,4 @@
 
 | ID | Title | Severity | Status | Notes |
 |---|---|---|---|---|
+| B-001 | Recency filter rejects all listings — Vinted API dropped timestamp fields | P1 | Fixed | `created_at_ts`/`created_at` absent from catalog response; None → False silenced all alerts |

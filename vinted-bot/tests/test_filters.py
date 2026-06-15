@@ -97,3 +97,20 @@ def test_check_price_exceeds_limit():
 
 def test_check_price_none_max_always_passes():
     assert filters.check_price(9999.00, None) is True
+
+
+def test_check_recency_recent_passes():
+    import time
+    ts = int(time.time()) - 3600  # 1 hour ago
+    assert filters.check_recency(ts, max_days=30) is True
+
+
+def test_check_recency_old_fails():
+    import time
+    ts = int(time.time()) - (40 * 24 * 3600)  # 40 days ago
+    assert filters.check_recency(ts, max_days=30) is False
+
+
+def test_check_recency_none_ts_passes():
+    # Vinted API no longer returns timestamps; unknown age must not block alerts
+    assert filters.check_recency(None, max_days=30) is True
