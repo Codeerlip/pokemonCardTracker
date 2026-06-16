@@ -1,14 +1,17 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-15
-- **Completed:** B-001 — recency filter was silencing 100% of listings. Vinted API dropped `created_at_ts`/`created_at` fields; `check_recency(None)` now returns `True`. 41/41 tests pass.
+- **Date:** 2026-06-16
+- **Completed:** B-002 — false-positive Discord alert for Pikachu (EVO 35 Evoluties) matching Nintendo Promo Pikachu search. Fixed `check_title_relevance` to require ≥2 set-number parts before skipping delta keyword check. 35 tests pass.
 - **In progress:** —
 - **Next up:** Add card image thumbnail to match notification (listing photo from Vinted API already extracted in _parse)
 
 ---
 
 ## Decision log
+
+### 2026-06-16 — B-002 false-positive Pikachu EVO 35 notification
+Single-token set numbers (e.g. "35") were bypassing the delta keyword check. Fixed by requiring ≥2 parts before the set-number shortcut fires. Two regression tests added.
 
 ### 2026-06-15 — B-001 recency filter fix
 Vinted catalog API dropped all date fields. `check_recency(None)` now returns `True` (pass through). DB deduplication prevents repeat notifications for the same listing.

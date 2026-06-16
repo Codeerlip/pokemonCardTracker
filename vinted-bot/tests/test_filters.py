@@ -83,6 +83,18 @@ def test_check_title_relevance_ex_card_passes_with_ex():
     assert filters.check_title_relevance("Salamence ex Dragon Frontiers 98/101", "Salamence ex δ", "98/101") is True
 
 
+def test_check_title_relevance_single_set_number_requires_delta_keyword():
+    # "Pikachu (EVO 35) Evoluties" must NOT match the Nintendo Promo Pikachu
+    # whose set_number is just "35" — single-token set numbers are too generic.
+    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is False
+
+
+def test_check_title_relevance_single_set_number_passes_with_delta_keyword():
+    # A listing that explicitly says "delta" must still match even with a
+    # single-component set_number.
+    assert filters.check_title_relevance("Pikachu delta promo 35", "Pikachu δ", "35") is True
+
+
 def test_check_price_within_limit():
     assert filters.check_price(12.50, 25.00) is True
 

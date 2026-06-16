@@ -22,3 +22,4 @@
 | ID | Title | Severity | Status | Notes |
 |---|---|---|---|---|
 | B-001 | Recency filter rejects all listings — Vinted API dropped timestamp fields | P1 | Fixed | `created_at_ts`/`created_at` absent from catalog response; None → False silenced all alerts |
+| B-002 | False-positive notification for non-delta Pikachu (EVO 35) matching promo Pikachu search | P2 | Fixed | Single-component set number "35" short-circuited delta keyword check; fixed by requiring ≥2 parts |

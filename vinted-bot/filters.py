@@ -80,7 +80,10 @@ def check_title_relevance(title: str, card_name: str, set_number: str = "") -> b
 
     if set_number:
         parts = set_number.replace("/", " ").split()
-        if all(p in title_lower for p in parts):
+        # Require ≥2 parts (e.g. "13/113" → ["13","113"]) before skipping the
+        # delta keyword check. Single tokens like "35" are too generic and would
+        # match unrelated sets (e.g. Evolutions "EVO 35").
+        if len(parts) >= 2 and all(p in title_lower for p in parts):
             return True
 
     return any(kw in title_lower for kw in ("delta", "δ", "species"))
