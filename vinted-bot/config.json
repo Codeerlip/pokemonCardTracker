@@ -261,6 +261,19 @@
       "max_price": 15.0
     },
     {
+      "name": "Rayquaza δ",
+      "set": "EX Holon Phantoms",
+      "set_number": "16/110",
+      "type": "Holo",
+      "search_queries": [
+        "Rayquaza holon phantoms",
+        "Rayquaza 16/110",
+        "Rayquaza 16 110",
+        "Rayquaza 16"
+      ],
+      "max_price": 65.0
+    },
+    {
       "name": "Aerodactyl δ",
       "set": "EX Holon Phantoms",
       "set_number": "35/110",
