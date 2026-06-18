@@ -36,3 +36,4 @@
 | P-011 | db.py — card sightings tracking | Done | database-engineer | 36/36 tests pass |
 | P-012 | notifier.py — run debrief Discord message | Done | notifier-engineer | Visual embed with emoji dots + match highlights |
 | P-013 | filters.py — recency filter (30-day max age) | Done | core-engineer | 36/36 tests pass |
+| P-014 | image_check.py — Claude vision English-language card check | Done | core-engineer | T-019..T-022 passing, 50/50 tests pass |

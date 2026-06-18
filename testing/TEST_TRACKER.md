@@ -31,3 +31,7 @@
 | T-016 | send() POSTs to Telegram with correct payload | P-005 | Passing | tests/test_notifier.py |
 | T-017 | send() message includes card name and price | P-005 | Passing | tests/test_notifier.py |
 | T-018 | send() message includes Vinted URL | P-005 | Passing | tests/test_notifier.py |
+| T-019 | check_card_is_english returns True for mocked English response | P-014 | Passing | tests/test_image_check.py |
+| T-020 | check_card_is_english returns False for mocked non-English response | P-014 | Passing | tests/test_image_check.py |
+| T-021 | check_card_is_english returns True when image fetch fails (fail-open) | P-014 | Passing | tests/test_image_check.py |
+| T-022 | check_card_is_english returns True when API key absent (fail-open) | P-014 | Passing | tests/test_image_check.py |

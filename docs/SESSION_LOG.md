@@ -1,14 +1,20 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-16
-- **Completed:** B-002 — false-positive Discord alert for Pikachu (EVO 35 Evoluties) matching Nintendo Promo Pikachu search. Fixed `check_title_relevance` to require ≥2 set-number parts before skipping delta keyword check. 35 tests pass.
+- **Date:** 2026-06-18
+- **Completed:** B-003 — false-positive for Rayquaza 26/110 (wrong set); P-014 — image_check.py with Claude Haiku vision to verify English card. 50/50 tests pass.
 - **In progress:** —
-- **Next up:** Add card image thumbnail to match notification (listing photo from Vinted API already extracted in _parse)
+- **Next up:** Disambiguation fix (P-015, Scenario 1/2): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
 
 ---
 
 ## Decision log
+
+### 2026-06-18 — P-014 image_check.py English card vision check
+Added `image_check.py` using `claude-haiku-4-5` vision. Downloads listing image, encodes base64, asks "YES/NO is this English?". Fail-open on missing API key, network errors, or API errors so no valid listings are silently dropped. Wired into `main.py` filter chain after existing filters.
+
+### 2026-06-18 — B-003 Rayquaza 26/110 wrong-set false-positive
+Added conflicting X/Y set number detection to `check_title_relevance`. If title contains an explicit `N/M` that differs from the target card's `set_number`, reject even when "delta" keyword appears.
 
 ### 2026-06-16 — B-002 false-positive Pikachu EVO 35 notification
 Single-token set numbers (e.g. "35") were bypassing the delta keyword check. Fixed by requiring ≥2 parts before the set-number shortcut fires. Two regression tests added.
