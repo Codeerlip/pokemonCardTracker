@@ -83,6 +83,44 @@ def test_check_title_relevance_ex_card_passes_with_ex():
     assert filters.check_title_relevance("Salamence ex Dragon Frontiers 98/101", "Salamence ex δ", "98/101") is True
 
 
+def test_check_title_relevance_conflicting_set_number_rejected():
+    # Rayquaza 26/110 listing must NOT match the 13/113 delta species card,
+    # even when "delta" appears in the title.
+    assert filters.check_title_relevance("Rayquaza 26/110 delta species", "Rayquaza δ", "13/113") is False
+
+
+def test_check_title_relevance_conflicting_set_number_rejected_for_hp():
+    # Same for Holon Phantoms 16/110 — a 26/110 listing must not match it.
+    assert filters.check_title_relevance("Rayquaza 26/110 delta species", "Rayquaza δ", "16/110") is False
+
+
+def test_check_title_relevance_no_set_number_in_title_passes_via_delta():
+    # A listing with no set number but with "delta species" must still pass.
+    assert filters.check_title_relevance("Rayquaza delta species holo", "Rayquaza δ", "13/113") is True
+
+
+def test_check_title_relevance_single_set_number_requires_delta_keyword():
+    # "Pikachu (EVO 35) Evoluties" must NOT match the Nintendo Promo Pikachu
+    # whose set_number is just "35" — single-token set numbers are too generic.
+    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is False
+
+
+def test_check_title_relevance_single_set_number_passes_with_delta_keyword():
+    # A listing that explicitly says "delta" must still match even with a
+    # single-component set_number.
+    assert filters.check_title_relevance("Pikachu delta promo 35", "Pikachu δ", "35") is True
+
+
+def test_check_title_relevance_single_set_number_delta_without_number_rejected():
+    # B-004: δ keyword present but "35" absent — must be rejected.
+    assert filters.check_title_relevance("Pikachu δ Nintendo promo", "Pikachu δ", "35") is False
+
+
+def test_check_title_relevance_single_set_number_both_number_and_delta_passes():
+    # B-004: listing mentions both "35" and δ → passes.
+    assert filters.check_title_relevance("Pikachu δ Nintendo promo 35", "Pikachu δ", "35") is True
+
+
 def test_check_price_within_limit():
     assert filters.check_price(12.50, 25.00) is True
 

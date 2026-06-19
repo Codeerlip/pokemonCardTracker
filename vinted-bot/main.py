@@ -9,6 +9,7 @@ import db
 import vinted
 import filters
 import notifier
+import image_check
 
 
 def load_config() -> dict:
@@ -17,7 +18,7 @@ def load_config() -> dict:
         return json.load(f)
 
 
-def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, list]:
+def process_card(card: dict, cfg: dict, dry_run: bool, session=None) -> tuple[int, list]:
     queries = card["search_queries"]
     print(f"[main] searching {len(queries)} query/queries for: {card['name']}")
     listings = vinted.search_multi(queries)
@@ -35,6 +36,12 @@ def process_card(card: dict, cfg: dict, dry_run: bool) -> tuple[int, list]:
         recency_ok = filters.check_recency(listing.get("created_at_ts"), cfg.get("max_listing_age_days", 30))
 
         if not title_ok or not condition_ok or not price_ok or not recency_ok:
+            db.mark_seen(listing["id"])
+            continue
+
+        image_url = listing.get("image_url", "")
+        if image_url and not image_check.check_card_is_english(image_url, session):
+            print(f"[main] SKIP (non-English image) — {listing['title']}")
             db.mark_seen(listing["id"])
             continue
 

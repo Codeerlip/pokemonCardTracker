@@ -1,4 +1,7 @@
+import re
 from datetime import datetime, timezone, timedelta
+
+_SET_NUMBER_RE = re.compile(r'\b(\d+)\s*/\s*(\d+)\b')
 
 DUTCH_MARKERS = {
     "nieuw", "gebruikt", "goede", "staat", "verzenden", "verzending",
@@ -69,7 +72,8 @@ def check_recency(created_at_ts: int | None, max_days: int = 30) -> bool:
 def check_title_relevance(title: str, card_name: str, set_number: str = "") -> bool:
     """Pokemon name must appear in the title, AND either:
     - the set number components both appear (e.g. '13' and '113'), OR
-    - an explicit set keyword ('delta', 'δ', 'species') appears.
+    - an explicit set keyword ('delta', 'δ', 'species') appears AND the title
+      does not contain a conflicting X/Y set number.
     Rarity markers (ex/gx/vmax/v) in the card name are optional."""
     _OPTIONAL = {"gx", "vmax", "v", "δ"}
     name_words = [w for w in card_name.lower().split() if w not in _OPTIONAL]
@@ -80,7 +84,21 @@ def check_title_relevance(title: str, card_name: str, set_number: str = "") -> b
 
     if set_number:
         parts = set_number.replace("/", " ").split()
-        if all(p in title_lower for p in parts):
+        # Require ≥2 parts (e.g. "13/113" → ["13","113"]) before skipping the
+        # delta keyword check. Single tokens like "35" are too generic and would
+        # match unrelated sets (e.g. Evolutions "EVO 35").
+        if len(parts) >= 2 and all(p in title_lower for p in parts):
             return True
+        # If the title contains an explicit X/Y number that differs from ours,
+        # it's a different card — reject even if "delta" appears in the title.
+        m = _SET_NUMBER_RE.search(title_lower)
+        if m:
+            title_set = f"{m.group(1)}/{m.group(2)}"
+            if title_set != set_number.lower():
+                return False
+        # Single-component set numbers (e.g. "35") are too generic for a delta
+        # keyword alone — the bare number must also appear in the title.
+        if len(parts) == 1 and parts[0] not in title_lower:
+            return False
 
     return any(kw in title_lower for kw in ("delta", "δ", "species"))

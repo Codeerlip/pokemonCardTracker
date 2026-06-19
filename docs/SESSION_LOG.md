@@ -1,14 +1,26 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-15
-- **Completed:** B-001 — recency filter was silencing 100% of listings. Vinted API dropped `created_at_ts`/`created_at` fields; `check_recency(None)` now returns `True`. 41/41 tests pass.
+- **Date:** 2026-06-19
+- **Completed:** B-004 — Pikachu δ Nintendo Promo false-positives when listing title had δ keyword but no "35". Added single-part set number gate. 52/52 tests pass.
 - **In progress:** —
-- **Next up:** Add card image thumbnail to match notification (listing photo from Vinted API already extracted in _parse)
+- **Next up:** Disambiguation fix (P-015, Scenario 1/2): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
 
 ---
 
 ## Decision log
+
+### 2026-06-19 — B-004 Pikachu δ Nintendo Promo single-number filter
+For single-component set numbers (e.g. "35"), the title must contain BOTH the bare number AND a delta keyword. Previously the δ symbol alone was sufficient, so "Pikachu δ Nintendo promo" (no "35") passed incorrectly.
+
+### 2026-06-18 — P-014 image_check.py English card vision check
+Added `image_check.py` using `claude-haiku-4-5` vision. Downloads listing image, encodes base64, asks "YES/NO is this English?". Fail-open on missing API key, network errors, or API errors so no valid listings are silently dropped. Wired into `main.py` filter chain after existing filters.
+
+### 2026-06-18 — B-003 Rayquaza 26/110 wrong-set false-positive
+Added conflicting X/Y set number detection to `check_title_relevance`. If title contains an explicit `N/M` that differs from the target card's `set_number`, reject even when "delta" keyword appears.
+
+### 2026-06-16 — B-002 false-positive Pikachu EVO 35 notification
+Single-token set numbers (e.g. "35") were bypassing the delta keyword check. Fixed by requiring ≥2 parts before the set-number shortcut fires. Two regression tests added.
 
 ### 2026-06-15 — B-001 recency filter fix
 Vinted catalog API dropped all date fields. `check_recency(None)` now returns `True` (pass through). DB deduplication prevents repeat notifications for the same listing.
