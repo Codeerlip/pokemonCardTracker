@@ -1,14 +1,17 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-18
-- **Completed:** B-003 — false-positive for Rayquaza 26/110 (wrong set); P-014 — image_check.py with Claude Haiku vision to verify English card. 50/50 tests pass.
+- **Date:** 2026-06-19
+- **Completed:** B-004 — Pikachu δ Nintendo Promo false-positives when listing title had δ keyword but no "35". Added single-part set number gate. 52/52 tests pass.
 - **In progress:** —
 - **Next up:** Disambiguation fix (P-015, Scenario 1/2): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
 
 ---
 
 ## Decision log
+
+### 2026-06-19 — B-004 Pikachu δ Nintendo Promo single-number filter
+For single-component set numbers (e.g. "35"), the title must contain BOTH the bare number AND a delta keyword. Previously the δ symbol alone was sufficient, so "Pikachu δ Nintendo promo" (no "35") passed incorrectly.
 
 ### 2026-06-18 — P-014 image_check.py English card vision check
 Added `image_check.py` using `claude-haiku-4-5` vision. Downloads listing image, encodes base64, asks "YES/NO is this English?". Fail-open on missing API key, network errors, or API errors so no valid listings are silently dropped. Wired into `main.py` filter chain after existing filters.

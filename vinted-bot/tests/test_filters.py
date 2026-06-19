@@ -111,6 +111,16 @@ def test_check_title_relevance_single_set_number_passes_with_delta_keyword():
     assert filters.check_title_relevance("Pikachu delta promo 35", "Pikachu δ", "35") is True
 
 
+def test_check_title_relevance_single_set_number_delta_without_number_rejected():
+    # B-004: δ keyword present but "35" absent — must be rejected.
+    assert filters.check_title_relevance("Pikachu δ Nintendo promo", "Pikachu δ", "35") is False
+
+
+def test_check_title_relevance_single_set_number_both_number_and_delta_passes():
+    # B-004: listing mentions both "35" and δ → passes.
+    assert filters.check_title_relevance("Pikachu δ Nintendo promo 35", "Pikachu δ", "35") is True
+
+
 def test_check_price_within_limit():
     assert filters.check_price(12.50, 25.00) is True
 

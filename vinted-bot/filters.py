@@ -96,5 +96,9 @@ def check_title_relevance(title: str, card_name: str, set_number: str = "") -> b
             title_set = f"{m.group(1)}/{m.group(2)}"
             if title_set != set_number.lower():
                 return False
+        # Single-component set numbers (e.g. "35") are too generic for a delta
+        # keyword alone — the bare number must also appear in the title.
+        if len(parts) == 1 and parts[0] not in title_lower:
+            return False
 
     return any(kw in title_lower for kw in ("delta", "δ", "species"))

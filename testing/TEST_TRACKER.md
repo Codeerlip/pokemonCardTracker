@@ -35,3 +35,5 @@
 | T-020 | check_card_is_english returns False for mocked non-English response | P-014 | Passing | tests/test_image_check.py |
 | T-021 | check_card_is_english returns True when image fetch fails (fail-open) | P-014 | Passing | tests/test_image_check.py |
 | T-022 | check_card_is_english returns True when API key absent (fail-open) | P-014 | Passing | tests/test_image_check.py |
+| T-023 | check_title_relevance rejects single-part set number when number absent from title | B-004 | Passing | tests/test_filters.py |
+| T-024 | check_title_relevance passes single-part set number when both number and delta keyword present | B-004 | Passing | tests/test_filters.py |
