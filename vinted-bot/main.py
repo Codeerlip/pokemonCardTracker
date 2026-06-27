@@ -31,7 +31,7 @@ def process_card(card: dict, cfg: dict, dry_run: bool, session=None) -> tuple[in
 
         language = filters.detect_language(listing["title"], listing["description"])
         title_ok = filters.check_title_relevance(listing["title"], card["name"], card.get("set_number", ""))
-        lang_ok = filters.check_no_foreign_language_tag(listing["title"])
+        lang_ok = filters.check_no_foreign_language_tag(listing["title"], listing.get("description", ""))
         condition_ok = filters.check_condition(listing["condition"])
         price_ok = filters.check_price(listing["price"], card.get("max_price"))
         recency_ok = filters.check_recency(listing.get("created_at_ts"), cfg.get("max_listing_age_days", 30))

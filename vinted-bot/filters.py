@@ -7,10 +7,14 @@ _SET_NUMBER_RE = re.compile(r'\b(\d+)\s*/\s*(\d+)\b')
 # "fr" is safe as a whole word — no common Dutch or English word is exactly "fr".
 # "de" and "nl" are intentionally excluded: "de" is a Dutch article and "nl"
 # appears in URLs and other shorthand unrelated to card language.
+# English language names (italian, french, german…) are included so that
+# descriptions like "Language: Italian" are caught even when the title is clean.
 _NON_ENGLISH_LANG_RE = re.compile(
     r'\b(?:ita|fra|ger|deu|por|spa|jpn|jap|kor|fr|'
     r'italiano|italiana|fran[cç]ais|fran[cç]aise|francese|deutsch|'
-    r'espagnol|espagnola|portugu[eê]s|portuguesa|japonais|japonaise)\b',
+    r'espagnol|espagnola|portugu[eê]s|portuguesa|japonais|japonaise|'
+    r'italian|french|german|spanish|portuguese|japanese|korean|'
+    r'dutch|nederlands)\b',
     re.IGNORECASE | re.UNICODE,
 )
 
@@ -46,9 +50,12 @@ _CONDITION_MAP: dict[str, str] = {
 ALLOWED_CONDITIONS = {"new", "like_new", "good"}
 
 
-def check_no_foreign_language_tag(title: str) -> bool:
-    """Returns False if the title contains a known non-English language tag (e.g. ITA, FR, deutsch)."""
-    return _NON_ENGLISH_LANG_RE.search(title) is None
+def check_no_foreign_language_tag(title: str, description: str = "") -> bool:
+    """Returns False if the title or description contains a known non-English language tag."""
+    return (
+        _NON_ENGLISH_LANG_RE.search(title) is None
+        and _NON_ENGLISH_LANG_RE.search(description) is None
+    )
 
 
 def detect_language(title: str, description: str) -> str:

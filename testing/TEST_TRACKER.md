@@ -42,3 +42,6 @@
 | T-027 | check_no_foreign_language_tag rejects title with "français" | B-005 | Passing | tests/test_filters.py |
 | T-028 | check_no_foreign_language_tag passes a clean English/Dutch title | B-005 | Passing | tests/test_filters.py |
 | T-029 | check_no_foreign_language_tag passes title containing "anglaise" (= English) | B-005 | Passing | tests/test_filters.py |
+| T-030 | check_no_foreign_language_tag rejects "Language: Italian" in description | B-006 | Passing | tests/test_filters.py |
+| T-031 | check_no_foreign_language_tag rejects "Language: French" in description | B-006 | Passing | tests/test_filters.py |
+| T-032 | check_no_foreign_language_tag passes "Language: English" in description | B-006 | Passing | tests/test_filters.py |
