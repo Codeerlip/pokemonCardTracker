@@ -25,3 +25,4 @@
 | B-002 | False-positive notification for non-delta Pikachu (EVO 35) matching promo Pikachu search | P2 | Fixed | Single-component set number "35" short-circuited delta keyword check; fixed by requiring ≥2 parts |
 | B-003 | False-positive notification for Rayquaza 26/110 matching delta Rayquaza searches | P2 | Fixed | Delta keyword alone accepted any Rayquaza mentioning "delta"; fixed by rejecting titles whose explicit X/Y set number conflicts with the target card |
 | B-004 | False-positive Pikachu δ Nintendo Promo — delta keyword passes without set number "35" in title | P2 | Fixed | Added gate: for single-component set numbers, the bare number must also appear in the title. T-023, T-024 added. |
+| B-005 | Non-English language tag in title not filtered — Italian/French cards pass through | P2 | Fixed | Added check_no_foreign_language_tag(); blocks ITA, FR, deutsch, français etc. as whole words. T-025..T-029. |

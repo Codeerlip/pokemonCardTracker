@@ -1,14 +1,17 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-19
-- **Completed:** B-004 — Pikachu δ Nintendo Promo false-positives when listing title had δ keyword but no "35". Added single-part set number gate. 52/52 tests pass.
+- **Date:** 2026-06-27
+- **Completed:** B-005 — language tag filter (ITA/FR/français/deutsch etc.); Eevee δ max_price raised to €7. 57/57 tests pass.
 - **In progress:** —
 - **Next up:** Disambiguation fix (P-015, Scenario 1/2): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
 
 ---
 
 ## Decision log
+
+### 2026-06-27 — B-005 foreign language tag filter + Eevee max_price
+Added check_no_foreign_language_tag() to filters.py; blocks standalone language codes (ITA, FR, ger, por…) and full words (français, deutsch, italiano). Eevee δ EX Delta Species max_price raised from €3 to €7.
 
 ### 2026-06-19 — B-004 Pikachu δ Nintendo Promo single-number filter
 For single-component set numbers (e.g. "35"), the title must contain BOTH the bare number AND a delta keyword. Previously the δ symbol alone was sufficient, so "Pikachu δ Nintendo promo" (no "35") passed incorrectly.
