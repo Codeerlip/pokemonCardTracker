@@ -178,3 +178,28 @@ def test_check_no_foreign_language_tag_passes_clean_title():
 def test_check_no_foreign_language_tag_passes_anglaise():
     # "anglaise" = French word for English — must not be blocked
     assert filters.check_no_foreign_language_tag("Eevee Delta spieces 68/113 anglaise en très bon état") is True
+
+
+# T-030
+def test_check_no_foreign_language_tag_rejects_italian_in_description():
+    # B-006: clean title but description says "Language: Italian"
+    assert filters.check_no_foreign_language_tag(
+        "Pokémon - Latias 21/110 - Rare Non Holo",
+        "Condition: Near Mint\nLanguage: Italian\nYear: 2006",
+    ) is False
+
+
+# T-031
+def test_check_no_foreign_language_tag_rejects_french_in_description():
+    assert filters.check_no_foreign_language_tag(
+        "Rayquaza delta holo 13/113",
+        "Language: French",
+    ) is False
+
+
+# T-032
+def test_check_no_foreign_language_tag_passes_english_in_description():
+    assert filters.check_no_foreign_language_tag(
+        "Rayquaza delta holo 13/113",
+        "Language: English\nCondition: Near Mint",
+    ) is True
