@@ -152,3 +152,29 @@ def test_check_recency_old_fails():
 def test_check_recency_none_ts_passes():
     # Vinted API no longer returns timestamps; unknown age must not block alerts
     assert filters.check_recency(None, max_days=30) is True
+
+
+# T-025
+def test_check_no_foreign_language_tag_rejects_ita():
+    assert filters.check_no_foreign_language_tag("Rayquaza δ Specie Delta Holo 13/113 EX Delta Species ITA Rara Vintage") is False
+
+
+# T-026
+def test_check_no_foreign_language_tag_rejects_fr():
+    assert filters.check_no_foreign_language_tag("Carte Pokémon Pikachu 35/108 XY Évolutions FR") is False
+
+
+# T-027
+def test_check_no_foreign_language_tag_rejects_francais():
+    assert filters.check_no_foreign_language_tag("Rayquaza delta espèces delta holo français") is False
+
+
+# T-028
+def test_check_no_foreign_language_tag_passes_clean_title():
+    assert filters.check_no_foreign_language_tag("Rayquaza delta species holo 13/113 EX Delta Species") is True
+
+
+# T-029
+def test_check_no_foreign_language_tag_passes_anglaise():
+    # "anglaise" = French word for English — must not be blocked
+    assert filters.check_no_foreign_language_tag("Eevee Delta spieces 68/113 anglaise en très bon état") is True

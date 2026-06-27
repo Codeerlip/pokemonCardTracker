@@ -31,11 +31,12 @@ def process_card(card: dict, cfg: dict, dry_run: bool, session=None) -> tuple[in
 
         language = filters.detect_language(listing["title"], listing["description"])
         title_ok = filters.check_title_relevance(listing["title"], card["name"], card.get("set_number", ""))
+        lang_ok = filters.check_no_foreign_language_tag(listing["title"])
         condition_ok = filters.check_condition(listing["condition"])
         price_ok = filters.check_price(listing["price"], card.get("max_price"))
         recency_ok = filters.check_recency(listing.get("created_at_ts"), cfg.get("max_listing_age_days", 30))
 
-        if not title_ok or not condition_ok or not price_ok or not recency_ok:
+        if not title_ok or not lang_ok or not condition_ok or not price_ok or not recency_ok:
             db.mark_seen(listing["id"])
             continue
 

@@ -37,3 +37,8 @@
 | T-022 | check_card_is_english returns True when API key absent (fail-open) | P-014 | Passing | tests/test_image_check.py |
 | T-023 | check_title_relevance rejects single-part set number when number absent from title | B-004 | Passing | tests/test_filters.py |
 | T-024 | check_title_relevance passes single-part set number when both number and delta keyword present | B-004 | Passing | tests/test_filters.py |
+| T-025 | check_no_foreign_language_tag rejects title with "ITA" | B-005 | Passing | tests/test_filters.py |
+| T-026 | check_no_foreign_language_tag rejects title with "FR" | B-005 | Passing | tests/test_filters.py |
+| T-027 | check_no_foreign_language_tag rejects title with "français" | B-005 | Passing | tests/test_filters.py |
+| T-028 | check_no_foreign_language_tag passes a clean English/Dutch title | B-005 | Passing | tests/test_filters.py |
+| T-029 | check_no_foreign_language_tag passes title containing "anglaise" (= English) | B-005 | Passing | tests/test_filters.py |
