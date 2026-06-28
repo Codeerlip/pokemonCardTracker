@@ -210,3 +210,37 @@ def test_check_no_foreign_language_tag_passes_english_in_description():
         "Rayquaza delta holo 13/113",
         "Language: English\nCondition: Near Mint",
     ) is True
+
+
+# T-034
+def test_check_title_relevance_conflicting_set_number_in_description_rejected():
+    # Mewtwo 24/110 listing with set number only in description must not match
+    # a search targeting Mewtwo 12/113.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Mewtwo Delta Species 24/110 Inglese",
+    ) is False
+
+
+# T-035
+def test_check_title_relevance_matching_set_number_in_description_passes():
+    # If the description confirms the correct set number, listing must pass.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Mewtwo Delta Species 12/113",
+    ) is True
+
+
+# T-036
+def test_check_title_relevance_no_set_number_in_description_passes_via_delta():
+    # Description has no set number at all — delta keyword in title is enough.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Near Mint condition, English card",
+    ) is True

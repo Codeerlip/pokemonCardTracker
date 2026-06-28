@@ -90,11 +90,11 @@ def check_recency(created_at_ts: int | None, max_days: int = 30) -> bool:
     return listing_date >= cutoff
 
 
-def check_title_relevance(title: str, card_name: str, set_number: str = "") -> bool:
+def check_title_relevance(title: str, card_name: str, set_number: str = "", description: str = "") -> bool:
     """Pokemon name must appear in the title, AND either:
     - the set number is present (both components for X/Y, bare number for singles), OR
-    - an explicit set keyword ('delta', 'δ', 'species') appears AND the title
-      does not contain a conflicting X/Y set number.
+    - an explicit set keyword ('delta', 'δ', 'species') appears AND neither the title
+      nor the description contains a conflicting X/Y set number.
     Rarity markers (ex/gx/vmax/v) in the card name are optional.
     Delta keywords are NOT required when the set number itself is present —
     many valid listings omit 'delta species' and just state the card name and number."""
@@ -116,6 +116,17 @@ def check_title_relevance(title: str, card_name: str, set_number: str = "") -> b
             title_set = f"{m.group(1)}/{m.group(2)}"
             if title_set != set_number.lower():
                 return False
+        else:
+            # No X/Y number in the title — also check the description.
+            # Sellers often omit the number from the title but include it in
+            # the description, so "Mewtwo Delta Species / 24/110" in the
+            # description correctly rules out a search targeting 12/113.
+            desc_lower = description.lower()
+            m2 = _SET_NUMBER_RE.search(desc_lower)
+            if m2:
+                desc_set = f"{m2.group(1)}/{m2.group(2)}"
+                if desc_set != set_number.lower():
+                    return False
         # For single-component set numbers the bare number is sufficient —
         # no delta keyword required (consistent with 2-part set number behaviour).
         if len(parts) == 1:

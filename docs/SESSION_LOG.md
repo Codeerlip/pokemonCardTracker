@@ -10,6 +10,9 @@
 
 ## Decision log
 
+### 2026-06-28 — P-017 description set-number conflict check
+Extended check_title_relevance() to also scan the description for a conflicting X/Y set number when none appears in the title. Catches cases like "Mewtwo Delta Species / 24/110" in description when the target is 12/113. T-034..T-036 added. 64/64 tests pass.
+
 ### 2026-06-28 — P-016 relax single-part set number filter + Pikachu δ promo price
 Single-part set numbers (e.g. "35") now pass check_title_relevance when the bare number appears in the title — no delta keyword required, consistent with 2-part behaviour. Pikachu δ Nintendo Promo max_price raised from €15 to €275 (CardMarket floor is €240). T-033 added.
 
