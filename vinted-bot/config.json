@@ -549,19 +549,6 @@
         "Pelipper 14"
       ],
       "max_price": 2.5
-    },
-    {
-      "name": "Pikachu δ",
-      "set": "Nintendo Promo",
-      "set_number": "35",
-      "type": "Holo",
-      "search_queries": [
-        "Pikachu delta promo",
-        "Pikachu nintendo promo 35",
-        "Pikachu promo 35",
-        "Pikachu 35"
-      ],
-      "max_price": 275.0
     }
   ],
   "poll_interval_seconds": 900,
