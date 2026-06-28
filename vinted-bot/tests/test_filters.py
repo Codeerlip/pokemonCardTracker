@@ -99,10 +99,17 @@ def test_check_title_relevance_no_set_number_in_title_passes_via_delta():
     assert filters.check_title_relevance("Rayquaza delta species holo", "Rayquaza δ", "13/113") is True
 
 
-def test_check_title_relevance_single_set_number_requires_delta_keyword():
-    # "Pikachu (EVO 35) Evoluties" must NOT match the Nintendo Promo Pikachu
-    # whose set_number is just "35" — single-token set numbers are too generic.
-    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is False
+def test_check_title_relevance_single_set_number_no_delta_keyword_passes():
+    # Single-component set numbers: bare number present in title is sufficient —
+    # no delta keyword required (mirrors 2-part set number behaviour).
+    # "Pikachu (EVO 35) Evoluties" now passes — both name and number are present.
+    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is True
+
+
+def test_check_title_relevance_single_set_number_black_star_promo_passes():
+    # T-033: "Pikachu 035 – Black Star Nintendo Promo" must match the promo Pikachu
+    # whose set_number is "35" — no delta keyword should be required.
+    assert filters.check_title_relevance("Pikachu 035 – Black Star Nintendo Promo", "Pikachu δ", "35") is True
 
 
 def test_check_title_relevance_single_set_number_passes_with_delta_keyword():

@@ -1,14 +1,20 @@
 # Session Log
 
 ## Last session
-- **Date:** 2026-06-27
-- **Completed:** B-005 — language tag filter (ITA/FR/français/deutsch etc.); Eevee δ max_price raised to €7. 57/57 tests pass.
+- **Date:** 2026-06-28
+- **Completed:** B-006 — language filter extended to description field; P-016 — single-part set numbers no longer require delta keyword (e.g. "Pikachu 035" now matches); Pikachu δ Nintendo Promo max_price raised to €275. 61/61 tests pass.
 - **In progress:** —
-- **Next up:** Disambiguation fix (P-015, Scenario 1/2): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
+- **Next up:** Disambiguation fix (P-015): require set number for cards with multiple tracked delta variants (Rayquaza, Pikachu, Mew)
 
 ---
 
 ## Decision log
+
+### 2026-06-28 — P-016 relax single-part set number filter + Pikachu δ promo price
+Single-part set numbers (e.g. "35") now pass check_title_relevance when the bare number appears in the title — no delta keyword required, consistent with 2-part behaviour. Pikachu δ Nintendo Promo max_price raised from €15 to €275 (CardMarket floor is €240). T-033 added.
+
+### 2026-06-28 — B-006 description language filter
+Extended check_no_foreign_language_tag() to also scan the listing description. "Language: Italian" in description now correctly blocks the listing. T-030..T-032 added.
 
 ### 2026-06-27 — B-005 foreign language tag filter + Eevee max_price
 Added check_no_foreign_language_tag() to filters.py; blocks standalone language codes (ITA, FR, ger, por…) and full words (français, deutsch, italiano). Eevee δ EX Delta Species max_price raised from €3 to €7.
