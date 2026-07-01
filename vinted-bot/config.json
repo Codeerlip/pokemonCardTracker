@@ -498,19 +498,6 @@
       ],
       "max_price": 6.0
     },
-    {
-      "name": "Pelipper δ",
-      "set": "POP Series 5",
-      "set_number": "14/17",
-      "type": "Common",
-      "search_queries": [
-        "Pelipper pop series 5",
-        "Pelipper 14/17",
-        "Pelipper 14 17",
-        "Pelipper 14"
-      ],
-      "max_price": 2.5
-    }
   ],
   "poll_interval_seconds": 900,
   "max_listing_age_days": 30,
