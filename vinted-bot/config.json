@@ -497,7 +497,7 @@
         "Charmeleon 5"
       ],
       "max_price": 6.0
-    },
+    }
   ],
   "poll_interval_seconds": 900,
   "max_listing_age_days": 30,
