@@ -99,10 +99,17 @@ def test_check_title_relevance_no_set_number_in_title_passes_via_delta():
     assert filters.check_title_relevance("Rayquaza delta species holo", "Rayquaza δ", "13/113") is True
 
 
-def test_check_title_relevance_single_set_number_requires_delta_keyword():
-    # "Pikachu (EVO 35) Evoluties" must NOT match the Nintendo Promo Pikachu
-    # whose set_number is just "35" — single-token set numbers are too generic.
-    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is False
+def test_check_title_relevance_single_set_number_no_delta_keyword_passes():
+    # Single-component set numbers: bare number present in title is sufficient —
+    # no delta keyword required (mirrors 2-part set number behaviour).
+    # "Pikachu (EVO 35) Evoluties" now passes — both name and number are present.
+    assert filters.check_title_relevance("Pikachu (EVO 35) Evoluties", "Pikachu δ", "35") is True
+
+
+def test_check_title_relevance_single_set_number_black_star_promo_passes():
+    # T-033: "Pikachu 035 – Black Star Nintendo Promo" must match the promo Pikachu
+    # whose set_number is "35" — no delta keyword should be required.
+    assert filters.check_title_relevance("Pikachu 035 – Black Star Nintendo Promo", "Pikachu δ", "35") is True
 
 
 def test_check_title_relevance_single_set_number_passes_with_delta_keyword():
@@ -202,4 +209,38 @@ def test_check_no_foreign_language_tag_passes_english_in_description():
     assert filters.check_no_foreign_language_tag(
         "Rayquaza delta holo 13/113",
         "Language: English\nCondition: Near Mint",
+    ) is True
+
+
+# T-034
+def test_check_title_relevance_conflicting_set_number_in_description_rejected():
+    # Mewtwo 24/110 listing with set number only in description must not match
+    # a search targeting Mewtwo 12/113.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Mewtwo Delta Species 24/110 Inglese",
+    ) is False
+
+
+# T-035
+def test_check_title_relevance_matching_set_number_in_description_passes():
+    # If the description confirms the correct set number, listing must pass.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Mewtwo Delta Species 12/113",
+    ) is True
+
+
+# T-036
+def test_check_title_relevance_no_set_number_in_description_passes_via_delta():
+    # Description has no set number at all — delta keyword in title is enough.
+    assert filters.check_title_relevance(
+        "Mewtwo Delta Species",
+        "Mewtwo δ",
+        "12/113",
+        "Near Mint condition, English card",
     ) is True

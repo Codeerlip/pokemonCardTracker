@@ -30,7 +30,7 @@ def process_card(card: dict, cfg: dict, dry_run: bool, session=None) -> tuple[in
             continue
 
         language = filters.detect_language(listing["title"], listing["description"])
-        title_ok = filters.check_title_relevance(listing["title"], card["name"], card.get("set_number", ""))
+        title_ok = filters.check_title_relevance(listing["title"], card["name"], card.get("set_number", ""), listing.get("description", ""))
         lang_ok = filters.check_no_foreign_language_tag(listing["title"], listing.get("description", ""))
         condition_ok = filters.check_condition(listing["condition"])
         price_ok = filters.check_price(listing["price"], card.get("max_price"))

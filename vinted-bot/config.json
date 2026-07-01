@@ -274,19 +274,6 @@
       "max_price": 65.0
     },
     {
-      "name": "Aerodactyl δ",
-      "set": "EX Holon Phantoms",
-      "set_number": "35/110",
-      "type": "Uncommon",
-      "search_queries": [
-        "Aerodactyl holon phantoms",
-        "Aerodactyl 35/110",
-        "Aerodactyl 35 110",
-        "Aerodactyl 35"
-      ],
-      "max_price": 3.0
-    },
-    {
       "name": "Gyarados ★ δ",
       "set": "EX Holon Phantoms",
       "set_number": "102/110",
@@ -298,19 +285,6 @@
         "Gyarados 102"
       ],
       "max_price": 700.0
-    },
-    {
-      "name": "Grovyle δ",
-      "set": "EX Crystal Guardians",
-      "set_number": "19/100",
-      "type": "Non-Holo",
-      "search_queries": [
-        "Grovyle crystal guardians",
-        "Grovyle 19/100",
-        "Grovyle 19 100",
-        "Grovyle 19"
-      ],
-      "max_price": 4.0
     },
     {
       "name": "Sceptile ex δ",
@@ -389,19 +363,6 @@
         "Xatu 25"
       ],
       "max_price": 3.5
-    },
-    {
-      "name": "Horsea δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "31/101",
-      "type": "Uncommon",
-      "search_queries": [
-        "Horsea dragon frontiers",
-        "Horsea 31/101",
-        "Horsea 31 101",
-        "Horsea 31"
-      ],
-      "max_price": 2.0
     },
     {
       "name": "Smeargle δ",
@@ -549,19 +510,6 @@
         "Pelipper 14"
       ],
       "max_price": 2.5
-    },
-    {
-      "name": "Pikachu δ",
-      "set": "Nintendo Promo",
-      "set_number": "35",
-      "type": "Holo",
-      "search_queries": [
-        "Pikachu delta promo",
-        "Pikachu nintendo promo 35",
-        "Pikachu promo 35",
-        "Pikachu 35"
-      ],
-      "max_price": 15.0
     }
   ],
   "poll_interval_seconds": 900,
