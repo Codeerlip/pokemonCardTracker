@@ -10,6 +10,9 @@
 
 ## Decision log
 
+### 2026-07-03 — P-018 fetch listing detail for description language check
+Vinted catalog API never returns the description field. Added vinted.fetch_description() calling /api/v2/items/{id}, invoked in main.py after initial filters pass. Re-runs check_no_foreign_language_tag with the full description. Fail-open on errors. T-037..T-039 added; 67/67 tests pass.
+
 ### 2026-06-28 — P-017 description set-number conflict check
 Extended check_title_relevance() to also scan the description for a conflicting X/Y set number when none appears in the title. Catches cases like "Mewtwo Delta Species / 24/110" in description when the target is 12/113. T-034..T-036 added. 64/64 tests pass.
 

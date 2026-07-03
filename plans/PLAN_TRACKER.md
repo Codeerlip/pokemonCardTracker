@@ -39,3 +39,4 @@
 | P-014 | image_check.py — Claude vision English-language card check | Done | core-engineer | T-019..T-022 passing, 50/50 tests pass |
 | P-016 | filters.py — relax single-part set number to not require delta keyword | Done | core-engineer | T-033 passing, 61/61 tests pass |
 | P-017 | filters.py — check description for conflicting set number when title has none | Done | core-engineer | T-034..T-036 passing, 64/64 tests pass |
+| P-018 | vinted.py / main.py — fetch listing detail to get description for language check | Done | core-engineer | T-037..T-039 passing, 67/67 tests pass |

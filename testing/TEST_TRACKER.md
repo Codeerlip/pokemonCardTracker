@@ -49,3 +49,6 @@
 | T-034 | check_title_relevance rejects listing whose conflicting set number appears only in description | P-017 | Passing | tests/test_filters.py |
 | T-035 | check_title_relevance passes when description confirms the correct set number | P-017 | Passing | tests/test_filters.py |
 | T-036 | check_title_relevance passes when description has no set number (delta keyword in title suffices) | P-017 | Passing | tests/test_filters.py |
+| T-037 | fetch_description returns description from item detail endpoint | P-018 | Passing | tests/test_vinted.py |
+| T-038 | fetch_description returns empty string on network error (fail-open) | P-018 | Passing | tests/test_vinted.py |
+| T-039 | fetch_description returns empty string when item field absent in response | P-018 | Passing | tests/test_vinted.py |

@@ -3,6 +3,7 @@ import random
 import requests
 
 CATALOG_URL = "https://www.vinted.nl/api/v2/catalog/items"
+ITEM_URL = "https://www.vinted.nl/api/v2/items/{item_id}"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -85,6 +86,18 @@ def search_multi(queries: list[str]) -> list[dict]:
                 results.append(parsed)
         time.sleep(random.uniform(0.5, 1.5))
     return results
+
+
+def fetch_description(listing_id: str) -> str:
+    """Fetch the full description from the item detail endpoint.
+    Fail-open: returns '' on any network or parse error."""
+    url = ITEM_URL.format(item_id=listing_id)
+    try:
+        data = _get_with_backoff(url, params={})
+        return data.get("item", {}).get("description", "")
+    except requests.RequestException as exc:
+        print(f"[vinted] description fetch failed for {listing_id}: {exc}")
+        return ""
 
 
 def _parse(item: dict) -> dict:

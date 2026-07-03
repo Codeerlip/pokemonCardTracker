@@ -50,3 +50,25 @@ def test_parse_handles_missing_fields():
     assert listing["id"] == ""
     assert listing["price"] == 0.0
     assert listing["currency"] == "EUR"
+
+
+def test_fetch_description_returns_description(mocker):
+    mocker.patch.object(vinted, "_get_with_backoff", return_value={"item": {"description": "stamped in italiano"}})
+    mocker.patch("vinted._init_session")
+    result = vinted.fetch_description("12345")
+    assert result == "stamped in italiano"
+
+
+def test_fetch_description_fail_open_on_error(mocker):
+    import requests as req
+    mocker.patch.object(vinted, "_get_with_backoff", side_effect=req.RequestException("timeout"))
+    mocker.patch("vinted._init_session")
+    result = vinted.fetch_description("12345")
+    assert result == ""
+
+
+def test_fetch_description_fail_open_on_missing_field(mocker):
+    mocker.patch.object(vinted, "_get_with_backoff", return_value={})
+    mocker.patch("vinted._init_session")
+    result = vinted.fetch_description("12345")
+    assert result == ""

@@ -40,6 +40,15 @@ def process_card(card: dict, cfg: dict, dry_run: bool, session=None) -> tuple[in
             db.mark_seen(listing["id"])
             continue
 
+        # Catalog API omits description; fetch the detail page to check it for
+        # language tags that would have been missed on the first pass.
+        if not listing.get("description"):
+            full_desc = vinted.fetch_description(listing["id"])
+            if not filters.check_no_foreign_language_tag(listing["title"], full_desc):
+                print(f"[main] SKIP (non-English in description) — {listing['title']}")
+                db.mark_seen(listing["id"])
+                continue
+
         image_url = listing.get("image_url", "")
         if image_url and not image_check.check_card_is_english(image_url, session):
             print(f"[main] SKIP (non-English image) — {listing['title']}")
