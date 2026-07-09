@@ -90,12 +90,14 @@ def search_multi(queries: list[str]) -> list[dict]:
 
 def fetch_description(listing_id: str) -> str:
     """Fetch the full description from the item detail endpoint.
-    Fail-open: returns '' on any network or parse error."""
+    Single attempt with a short timeout — best-effort, fail-open."""
+    _init_session()
     url = ITEM_URL.format(item_id=listing_id)
     try:
-        data = _get_with_backoff(url, params={})
-        return data.get("item", {}).get("description", "")
-    except requests.RequestException as exc:
+        resp = _session.get(url, timeout=5)
+        resp.raise_for_status()
+        return resp.json().get("item", {}).get("description", "")
+    except Exception as exc:
         print(f"[vinted] description fetch failed for {listing_id}: {exc}")
         return ""
 

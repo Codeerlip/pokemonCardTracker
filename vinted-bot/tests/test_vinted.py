@@ -53,7 +53,9 @@ def test_parse_handles_missing_fields():
 
 
 def test_fetch_description_returns_description(mocker):
-    mocker.patch.object(vinted, "_get_with_backoff", return_value={"item": {"description": "stamped in italiano"}})
+    mock_resp = mocker.MagicMock()
+    mock_resp.json.return_value = {"item": {"description": "stamped in italiano"}}
+    mocker.patch.object(vinted._session, "get", return_value=mock_resp)
     mocker.patch("vinted._init_session")
     result = vinted.fetch_description("12345")
     assert result == "stamped in italiano"
@@ -61,14 +63,16 @@ def test_fetch_description_returns_description(mocker):
 
 def test_fetch_description_fail_open_on_error(mocker):
     import requests as req
-    mocker.patch.object(vinted, "_get_with_backoff", side_effect=req.RequestException("timeout"))
+    mocker.patch.object(vinted._session, "get", side_effect=req.RequestException("timeout"))
     mocker.patch("vinted._init_session")
     result = vinted.fetch_description("12345")
     assert result == ""
 
 
 def test_fetch_description_fail_open_on_missing_field(mocker):
-    mocker.patch.object(vinted, "_get_with_backoff", return_value={})
+    mock_resp = mocker.MagicMock()
+    mock_resp.json.return_value = {}
+    mocker.patch.object(vinted._session, "get", return_value=mock_resp)
     mocker.patch("vinted._init_session")
     result = vinted.fetch_description("12345")
     assert result == ""
