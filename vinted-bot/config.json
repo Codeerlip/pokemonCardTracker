@@ -79,45 +79,6 @@
       "max_price": 45.0
     },
     {
-      "name": "Umbreon δ",
-      "set": "EX Delta Species",
-      "set_number": "17/113",
-      "type": "Holo",
-      "search_queries": [
-        "Umbreon delta species",
-        "Umbreon 17/113",
-        "Umbreon 17 113",
-        "Umbreon 17"
-      ],
-      "max_price": 65.0
-    },
-    {
-      "name": "Azumarill δ",
-      "set": "EX Delta Species",
-      "set_number": "19/113",
-      "type": "Non-Holo",
-      "search_queries": [
-        "Azumarill delta species",
-        "Azumarill 19/113",
-        "Azumarill 19 113",
-        "Azumarill 19"
-      ],
-      "max_price": 3.0
-    },
-    {
-      "name": "Sandslash δ",
-      "set": "EX Delta Species",
-      "set_number": "27/113",
-      "type": "Non-Holo",
-      "search_queries": [
-        "Sandslash delta species",
-        "Sandslash 27/113",
-        "Sandslash 27 113",
-        "Sandslash 27"
-      ],
-      "max_price": 3.0
-    },
-    {
       "name": "Dragonair δ",
       "set": "EX Delta Species",
       "set_number": "42/113",
@@ -144,19 +105,6 @@
       "max_price": 2.0
     },
     {
-      "name": "Dratini δ",
-      "set": "EX Delta Species",
-      "set_number": "66/113",
-      "type": "Common",
-      "search_queries": [
-        "Dratini delta species",
-        "Dratini 66/113",
-        "Dratini 66 113",
-        "Dratini 66"
-      ],
-      "max_price": 1.5
-    },
-    {
       "name": "Eevee δ",
       "set": "EX Delta Species",
       "set_number": "68/113",
@@ -168,19 +116,6 @@
         "Eevee 68"
       ],
       "max_price": 7.0
-    },
-    {
-      "name": "Cradily δ",
-      "set": "EX Holon Phantoms",
-      "set_number": "2/110",
-      "type": "Holo",
-      "search_queries": [
-        "Cradily holon phantoms",
-        "Cradily 2/110",
-        "Cradily 2 110",
-        "Cradily 2"
-      ],
-      "max_price": 16.0
     },
     {
       "name": "Deoxys δ (Darkness)",
@@ -209,19 +144,6 @@
       "max_price": 25.0
     },
     {
-      "name": "Deoxys δ (Lightning)",
-      "set": "EX Holon Phantoms",
-      "set_number": "6/110",
-      "type": "Holo",
-      "search_queries": [
-        "Deoxys holon phantoms",
-        "Deoxys 6/110",
-        "Deoxys 6 110",
-        "Deoxys 6"
-      ],
-      "max_price": 25.0
-    },
-    {
       "name": "Latias δ",
       "set": "EX Holon Phantoms",
       "set_number": "11/110",
@@ -233,32 +155,6 @@
         "Latias 11"
       ],
       "max_price": 25.0
-    },
-    {
-      "name": "Latios δ",
-      "set": "EX Holon Phantoms",
-      "set_number": "12/110",
-      "type": "Holo",
-      "search_queries": [
-        "Latios holon phantoms",
-        "Latios 12/110",
-        "Latios 12 110",
-        "Latios 12"
-      ],
-      "max_price": 25.0
-    },
-    {
-      "name": "Omastar δ",
-      "set": "EX Holon Phantoms",
-      "set_number": "13/110",
-      "type": "Holo",
-      "search_queries": [
-        "Omastar holon phantoms",
-        "Omastar 13/110",
-        "Omastar 13 110",
-        "Omastar 13"
-      ],
-      "max_price": 15.0
     },
     {
       "name": "Rayquaza δ",
@@ -300,19 +196,6 @@
       "max_price": 65.0
     },
     {
-      "name": "Heracross δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "3/101",
-      "type": "Holo",
-      "search_queries": [
-        "Heracross dragon frontiers",
-        "Heracross 3/101",
-        "Heracross 3 101",
-        "Heracross 3"
-      ],
-      "max_price": 20.0
-    },
-    {
       "name": "Milotic δ",
       "set": "EX Dragon Frontiers",
       "set_number": "5/101",
@@ -326,19 +209,6 @@
       "max_price": 30.0
     },
     {
-      "name": "Snorlax δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "10/101",
-      "type": "Holo",
-      "search_queries": [
-        "Snorlax dragon frontiers",
-        "Snorlax 10/101",
-        "Snorlax 10 101",
-        "Snorlax 10"
-      ],
-      "max_price": 45.0
-    },
-    {
       "name": "Lickitung δ",
       "set": "EX Dragon Frontiers",
       "set_number": "19/101",
@@ -350,45 +220,6 @@
         "Lickitung 19"
       ],
       "max_price": 3.5
-    },
-    {
-      "name": "Xatu δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "25/101",
-      "type": "Non-Holo",
-      "search_queries": [
-        "Xatu dragon frontiers",
-        "Xatu 25/101",
-        "Xatu 25 101",
-        "Xatu 25"
-      ],
-      "max_price": 3.5
-    },
-    {
-      "name": "Smeargle δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "39/101",
-      "type": "Uncommon",
-      "search_queries": [
-        "Smeargle dragon frontiers",
-        "Smeargle 39/101",
-        "Smeargle 39 101",
-        "Smeargle 39"
-      ],
-      "max_price": 2.5
-    },
-    {
-      "name": "Latias ex δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "95/101",
-      "type": "Holo ex",
-      "search_queries": [
-        "Latias ex dragon frontiers",
-        "Latias ex 95/101",
-        "Latias ex 95 101",
-        "Latias ex 95"
-      ],
-      "max_price": 55.0
     },
     {
       "name": "Salamence ex δ",
@@ -455,20 +286,6 @@
         "Chimecho 1"
       ],
       "max_price": 4.0
-    },
-    {
-      "name": "Deoxys δ",
-      "set": "POP Series 4",
-      "set_number": "02/17",
-      "type": "Rare",
-      "search_queries": [
-        "Deoxys pop series 4",
-        "Deoxys 02/17",
-        "Deoxys 02 17",
-        "Deoxys 2/17",
-        "Deoxys 2"
-      ],
-      "max_price": 8.0
     },
     {
       "name": "Mew δ",
