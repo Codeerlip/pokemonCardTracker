@@ -209,19 +209,6 @@
       "max_price": 30.0
     },
     {
-      "name": "Lickitung δ",
-      "set": "EX Dragon Frontiers",
-      "set_number": "19/101",
-      "type": "Non-Holo",
-      "search_queries": [
-        "Lickitung dragon frontiers",
-        "Lickitung 19/101",
-        "Lickitung 19 101",
-        "Lickitung 19"
-      ],
-      "max_price": 3.5
-    },
-    {
       "name": "Salamence ex δ",
       "set": "EX Dragon Frontiers",
       "set_number": "98/101",
