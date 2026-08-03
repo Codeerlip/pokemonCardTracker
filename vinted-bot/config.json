@@ -301,6 +301,149 @@
         "Charmeleon 5"
       ],
       "max_price": 6.0
+    },
+    {
+      "name": "Articuno ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "96/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Articuno ex team rocket returns",
+        "Articuno ex 96/109",
+        "Articuno ex 96 109",
+        "Articuno ex 96"
+      ],
+      "max_price": 304.00
+    },
+    {
+      "name": "Entei ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "97/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Entei ex team rocket returns",
+        "Entei ex 97/109",
+        "Entei ex 97 109",
+        "Entei ex 97"
+      ],
+      "max_price": 400.00
+    },
+    {
+      "name": "Hitmonchan ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "98/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Hitmonchan ex team rocket returns",
+        "Hitmonchan ex 98/109",
+        "Hitmonchan ex 98 109",
+        "Hitmonchan ex 98"
+      ],
+      "max_price": 167.76
+    },
+    {
+      "name": "Mewtwo ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "99/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Mewtwo ex team rocket returns",
+        "Mewtwo ex 99/109",
+        "Mewtwo ex 99 109",
+        "Mewtwo ex 99"
+      ],
+      "max_price": 452.00
+    },
+    {
+      "name": "Moltres ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "100/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Moltres ex team rocket returns",
+        "Moltres ex 100/109",
+        "Moltres ex 100 109",
+        "Moltres ex 100"
+      ],
+      "max_price": 399.10
+    },
+    {
+      "name": "Scizor ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "101/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Scizor ex team rocket returns",
+        "Scizor ex 101/109",
+        "Scizor ex 101 109",
+        "Scizor ex 101"
+      ],
+      "max_price": 272.82
+    },
+    {
+      "name": "Scyther ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "102/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Scyther ex team rocket returns",
+        "Scyther ex 102/109",
+        "Scyther ex 102 109",
+        "Scyther ex 102"
+      ],
+      "max_price": 281.59
+    },
+    {
+      "name": "Sneasel ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "103/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Sneasel ex team rocket returns",
+        "Sneasel ex 103/109",
+        "Sneasel ex 103 109",
+        "Sneasel ex 103"
+      ],
+      "max_price": 271.99
+    },
+    {
+      "name": "Snorlax ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "104/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Snorlax ex team rocket returns",
+        "Snorlax ex 104/109",
+        "Snorlax ex 104 109",
+        "Snorlax ex 104"
+      ],
+      "max_price": 475.99
+    },
+    {
+      "name": "Suicune ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "105/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Suicune ex team rocket returns",
+        "Suicune ex 105/109",
+        "Suicune ex 105 109",
+        "Suicune ex 105"
+      ],
+      "max_price": 400.00
+    },
+    {
+      "name": "Zapdos ex",
+      "set": "EX Team Rocket Returns",
+      "set_number": "106/109",
+      "type": "Holo ex",
+      "search_queries": [
+        "Zapdos ex team rocket returns",
+        "Zapdos ex 106/109",
+        "Zapdos ex 106 109",
+        "Zapdos ex 106"
+      ],
+      "max_price": 719.99
     }
   ],
   "poll_interval_seconds": 900,
