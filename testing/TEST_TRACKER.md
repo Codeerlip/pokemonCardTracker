@@ -52,3 +52,5 @@
 | T-037 | fetch_description returns description from item detail endpoint | P-018 | Passing | tests/test_vinted.py |
 | T-038 | fetch_description returns empty string on network error (fail-open) | P-018 | Passing | tests/test_vinted.py |
 | T-039 | fetch_description returns empty string when item field absent in response | P-018 | Passing | tests/test_vinted.py |
+| T-040 | send_debrief caps header summary to 9 matches + overflow line on large batches, no raise | B-007 | Passing | tests/test_notifier.py |
+| T-041 | send_debrief header summary has no overflow line when matches <= 9 | B-007 | Passing | tests/test_notifier.py |

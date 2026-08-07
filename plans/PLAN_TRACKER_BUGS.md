@@ -26,3 +26,5 @@
 | B-003 | False-positive notification for Rayquaza 26/110 matching delta Rayquaza searches | P2 | Fixed | Delta keyword alone accepted any Rayquaza mentioning "delta"; fixed by rejecting titles whose explicit X/Y set number conflicts with the target card |
 | B-004 | False-positive Pikachu δ Nintendo Promo — delta keyword passes without set number "35" in title | P2 | Fixed | Added gate: for single-component set numbers, the bare number must also appear in the title. T-023, T-024 added. |
 | B-005 | Non-English language tag in title not filtered — Italian/French cards pass through | P2 | Fixed | Added check_no_foreign_language_tag(); blocks ITA, FR, deutsch, français etc. as whole words. T-025..T-029. |
+| B-006 | Non-English language tag in description not filtered when title is clean | P2 | Fixed | check_no_foreign_language_tag() extended to check description too. T-030..T-032. |
+| B-007 | Discord debrief crashes with 400 Bad Request on large match batches | P0 | Fixed | Header embed summary now capped to 9 matches + overflow line, matching the existing per-embed cap. T-040, T-041. |

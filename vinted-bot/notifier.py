@@ -14,11 +14,16 @@ def send_debrief(matches: list, webhook_url: str) -> None:
 
     embeds = []
 
-    # Header embed with compact summary of all matches
+    # Header embed with compact summary of all matches. Capped to the same 9 matches
+    # that get detail embeds below — Discord limits a single POST to 6000 characters
+    # of combined embed text, and an uncapped summary can exceed that on a large
+    # first-run backfill (e.g. right after adding several new cards to the tracker).
     summary_lines = [
         f"• {m['card_name']} · {m['card_set']} · €{m['listing']['price']:.2f}"
-        for m in matches
+        for m in matches[:9]
     ]
+    if count > 9:
+        summary_lines.append(f"…and {count - 9} more")
     embeds.append({
         "title": f"🎴 {count} new listing{'s' if count > 1 else ''} · {timestamp}",
         "description": "\n".join(summary_lines),

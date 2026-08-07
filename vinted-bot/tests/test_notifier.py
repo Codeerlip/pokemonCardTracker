@@ -54,3 +54,30 @@ def test_debrief_embed_links_to_vinted(mocker):
     embeds = mock_post.call_args.kwargs["json"]["embeds"]
     urls = [e.get("url", "") for e in embeds]
     assert any("vinted.nl" in u for u in urls)
+
+
+# T-040
+def test_debrief_large_batch_caps_summary_and_does_not_raise(mocker):
+    mock_post = mocker.patch("notifier.requests.post")
+    mock_post.return_value.raise_for_status = lambda: None
+
+    matches = [MATCH] * 50
+    notifier.send_debrief(matches, WEBHOOK)
+
+    header = mock_post.call_args.kwargs["json"]["embeds"][0]
+    summary_lines = header["description"].split("\n")
+    assert len(summary_lines) == 10  # 9 matches + 1 overflow line
+    assert "…and 41 more" in summary_lines[-1]
+
+
+# T-041
+def test_debrief_small_batch_summary_has_no_overflow_line(mocker):
+    mock_post = mocker.patch("notifier.requests.post")
+    mock_post.return_value.raise_for_status = lambda: None
+
+    notifier.send_debrief([MATCH, MATCH], WEBHOOK)
+
+    header = mock_post.call_args.kwargs["json"]["embeds"][0]
+    summary_lines = header["description"].split("\n")
+    assert len(summary_lines) == 2
+    assert not any("more" in line for line in summary_lines)
