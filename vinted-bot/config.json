@@ -303,6 +303,123 @@
       "max_price": 6.0
     },
     {
+      "name": "Dark Ampharos",
+      "set": "EX Team Rocket Returns",
+      "set_number": "2/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Ampharos team rocket returns",
+        "Dark Ampharos 2/109",
+        "Dark Ampharos 2 109",
+        "Dark Ampharos 2"
+      ],
+      "max_price": 50.00
+    },
+    {
+      "name": "Dark Crobat",
+      "set": "EX Team Rocket Returns",
+      "set_number": "3/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Crobat team rocket returns",
+        "Dark Crobat 3/109",
+        "Dark Crobat 3 109",
+        "Dark Crobat 3"
+      ],
+      "max_price": 20.00
+    },
+    {
+      "name": "Dark Electrode",
+      "set": "EX Team Rocket Returns",
+      "set_number": "4/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Electrode team rocket returns",
+        "Dark Electrode 4/109",
+        "Dark Electrode 4 109",
+        "Dark Electrode 4"
+      ],
+      "max_price": 25.00
+    },
+    {
+      "name": "Dark Houndoom",
+      "set": "EX Team Rocket Returns",
+      "set_number": "5/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Houndoom team rocket returns",
+        "Dark Houndoom 5/109",
+        "Dark Houndoom 5 109",
+        "Dark Houndoom 5"
+      ],
+      "max_price": 40.00
+    },
+    {
+      "name": "Dark Hypno",
+      "set": "EX Team Rocket Returns",
+      "set_number": "6/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Hypno team rocket returns",
+        "Dark Hypno 6/109",
+        "Dark Hypno 6 109",
+        "Dark Hypno 6"
+      ],
+      "max_price": 25.00
+    },
+    {
+      "name": "Dark Marowak",
+      "set": "EX Team Rocket Returns",
+      "set_number": "7/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Marowak team rocket returns",
+        "Dark Marowak 7/109",
+        "Dark Marowak 7 109",
+        "Dark Marowak 7"
+      ],
+      "max_price": 10.00
+    },
+    {
+      "name": "Dark Octillery",
+      "set": "EX Team Rocket Returns",
+      "set_number": "8/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Octillery team rocket returns",
+        "Dark Octillery 8/109",
+        "Dark Octillery 8 109",
+        "Dark Octillery 8"
+      ],
+      "max_price": 15.00
+    },
+    {
+      "name": "Dark Slowking",
+      "set": "EX Team Rocket Returns",
+      "set_number": "9/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Slowking team rocket returns",
+        "Dark Slowking 9/109",
+        "Dark Slowking 9 109",
+        "Dark Slowking 9"
+      ],
+      "max_price": 37.00
+    },
+    {
+      "name": "Dark Steelix",
+      "set": "EX Team Rocket Returns",
+      "set_number": "10/109",
+      "type": "Holo",
+      "search_queries": [
+        "Dark Steelix team rocket returns",
+        "Dark Steelix 10/109",
+        "Dark Steelix 10 109",
+        "Dark Steelix 10"
+      ],
+      "max_price": 45.00
+    },
+    {
       "name": "Articuno ex",
       "set": "EX Team Rocket Returns",
       "set_number": "96/109",
@@ -313,7 +430,7 @@
         "Articuno ex 96 109",
         "Articuno ex 96"
       ],
-      "max_price": 304.00
+      "max_price": 500.00
     },
     {
       "name": "Entei ex",
@@ -326,7 +443,7 @@
         "Entei ex 97 109",
         "Entei ex 97"
       ],
-      "max_price": 400.00
+      "max_price": 300.00
     },
     {
       "name": "Hitmonchan ex",
@@ -339,7 +456,7 @@
         "Hitmonchan ex 98 109",
         "Hitmonchan ex 98"
       ],
-      "max_price": 167.76
+      "max_price": 170.00
     },
     {
       "name": "Mewtwo ex",
@@ -352,7 +469,7 @@
         "Mewtwo ex 99 109",
         "Mewtwo ex 99"
       ],
-      "max_price": 452.00
+      "max_price": 750.00
     },
     {
       "name": "Moltres ex",
@@ -365,7 +482,7 @@
         "Moltres ex 100 109",
         "Moltres ex 100"
       ],
-      "max_price": 399.10
+      "max_price": 350.00
     },
     {
       "name": "Scizor ex",
@@ -378,7 +495,7 @@
         "Scizor ex 101 109",
         "Scizor ex 101"
       ],
-      "max_price": 272.82
+      "max_price": 250.00
     },
     {
       "name": "Scyther ex",
@@ -391,7 +508,7 @@
         "Scyther ex 102 109",
         "Scyther ex 102"
       ],
-      "max_price": 281.59
+      "max_price": 250.00
     },
     {
       "name": "Sneasel ex",
@@ -404,7 +521,7 @@
         "Sneasel ex 103 109",
         "Sneasel ex 103"
       ],
-      "max_price": 271.99
+      "max_price": 200.00
     },
     {
       "name": "Snorlax ex",
@@ -417,7 +534,7 @@
         "Snorlax ex 104 109",
         "Snorlax ex 104"
       ],
-      "max_price": 475.99
+      "max_price": 1000.00
     },
     {
       "name": "Suicune ex",
@@ -430,7 +547,7 @@
         "Suicune ex 105 109",
         "Suicune ex 105"
       ],
-      "max_price": 400.00
+      "max_price": 500.00
     },
     {
       "name": "Zapdos ex",
@@ -443,7 +560,7 @@
         "Zapdos ex 106 109",
         "Zapdos ex 106"
       ],
-      "max_price": 719.99
+      "max_price": 350.00
     }
   ],
   "poll_interval_seconds": 900,
