@@ -561,6 +561,19 @@
         "Zapdos ex 106"
       ],
       "max_price": 350.00
+    },
+    {
+      "name": "Persian ex",
+      "set": "EX Unseen Forces",
+      "set_number": "116/115",
+      "type": "Holo ex",
+      "search_queries": [
+        "Persian ex unseen forces",
+        "Persian ex 116/115",
+        "Persian ex 116 115",
+        "Persian ex 116"
+      ],
+      "max_price": 90.00
     }
   ],
   "poll_interval_seconds": 900,
