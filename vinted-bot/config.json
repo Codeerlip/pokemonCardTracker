@@ -53,19 +53,6 @@
       "max_price": 70.0
     },
     {
-      "name": "Starmie δ",
-      "set": "EX Delta Species",
-      "set_number": "15/113",
-      "type": "Holo",
-      "search_queries": [
-        "Starmie delta species",
-        "Starmie 15/113",
-        "Starmie 15 113",
-        "Starmie 15"
-      ],
-      "max_price": 18.0
-    },
-    {
       "name": "Tyranitar δ",
       "set": "EX Delta Species",
       "set_number": "16/113",
@@ -77,19 +64,6 @@
         "Tyranitar 16"
       ],
       "max_price": 45.0
-    },
-    {
-      "name": "Dragonair δ",
-      "set": "EX Delta Species",
-      "set_number": "42/113",
-      "type": "Uncommon",
-      "search_queries": [
-        "Dragonair delta species",
-        "Dragonair 42/113",
-        "Dragonair 42 113",
-        "Dragonair 42"
-      ],
-      "max_price": 2.5
     },
     {
       "name": "Shelgon δ",
@@ -170,19 +144,6 @@
       "max_price": 700.0
     },
     {
-      "name": "Sceptile ex δ",
-      "set": "EX Crystal Guardians",
-      "set_number": "96/100",
-      "type": "Holo ex",
-      "search_queries": [
-        "Sceptile ex crystal guardians",
-        "Sceptile ex 96/100",
-        "Sceptile ex 96 100",
-        "Sceptile ex 96"
-      ],
-      "max_price": 90.0
-    },
-    {
       "name": "Milotic δ",
       "set": "EX Dragon Frontiers",
       "set_number": "5/101",
@@ -220,6 +181,19 @@
         "Tyranitar ex 99"
       ],
       "max_price": 100.0
+    },
+    {
+      "name": "Pikachu δ",
+      "set": "Nintendo Promo",
+      "set_number": "35",
+      "type": "Holo",
+      "search_queries": [
+        "Pikachu delta promo",
+        "Pikachu nintendo promo 35",
+        "Pikachu promo 35",
+        "Pikachu 35"
+      ],
+      "max_price": 300.0
     },
     {
       "name": "Mew ★ δ",
